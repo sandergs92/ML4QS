@@ -18,7 +18,6 @@ import sys
 from pathlib import Path
 import dateutil
 import matplotlib as mpl
-mpl.use('tkagg')
 
 class VisualizeDataset:
 
@@ -170,7 +169,6 @@ class VisualizeDataset:
     # Plot values that have been imputed using one of our imputation approaches. Here, values expresses the
     # 1 to n datasets that have resulted from value imputation.
     def plot_imputed_values(self, data_table, names, col, *values):
-
         xfmt = md.DateFormatter('%H:%M')
 
         # Create proper subplots.
@@ -195,6 +193,7 @@ class VisualizeDataset:
             xar[i].legend([names[i]], fontsize='small', numpoints=1, loc='upper center',  bbox_to_anchor=(0.5, 1.3), ncol=1, fancybox=True, shadow=True)
 
         # Diplay is nicely in subplots.
+        f.set_size_inches(18.5, 10.5, forward=True)
         plt.setp([a.get_xticklabels() for a in f.axes[:-1]], visible=False)
         plt.xlabel('time')
         self.save(plt)

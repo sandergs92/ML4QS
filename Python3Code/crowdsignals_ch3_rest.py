@@ -64,11 +64,13 @@ def main():
         imputed_mean_dataset = MisVal.impute_mean(copy.deepcopy(dataset), 'hr_watch_rate')       
         imputed_median_dataset = MisVal.impute_median(copy.deepcopy(dataset), 'hr_watch_rate')
         imputed_interpolation_dataset = MisVal.impute_interpolate(copy.deepcopy(dataset), 'hr_watch_rate')
+        imputed_model_dataset = MisVal.impute_iterative_model(copy.deepcopy(dataset), 'hr_watch_rate')
         
-        DataViz.plot_imputed_values(dataset, ['original', 'mean', 'median', 'interpolation'], 'hr_watch_rate',
+        DataViz.plot_imputed_values(dataset, ['original', 'mean', 'median', 'interpolation', 'BayesianRidge model'], 'hr_watch_rate',
                                     imputed_mean_dataset['hr_watch_rate'], 
                                     imputed_median_dataset['hr_watch_rate'],
-                                    imputed_interpolation_dataset['hr_watch_rate'])
+                                    imputed_interpolation_dataset['hr_watch_rate'],
+                                    imputed_model_dataset['hr_watch_rate'])
 
     elif FLAGS.mode == 'kalman':
         # Using the result from Chapter 2, let us try the Kalman filter on the light_phone_lux attribute and study the result.
