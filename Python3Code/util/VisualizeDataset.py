@@ -107,6 +107,7 @@ class VisualizeDataset:
                              max(max_values) + 0.1*(max(max_values) - min(min_values))])
 
         # Make sure we get a nice figure with only a single x-axis and labels there.
+        f.set_size_inches(18.5, 10.5, forward=True)
         plt.setp([a.get_xticklabels() for a in f.axes[:-1]], visible=False)
         plt.xlabel('time')
         self.save(plt)
