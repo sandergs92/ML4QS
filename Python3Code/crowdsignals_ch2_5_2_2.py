@@ -9,12 +9,12 @@ from scipy.stats import ks_2samp
 # Chapter 2.5.2.2
 
 RESULT_PATH = Path('./intermediate_datafiles/chapter2_result.csv')
-EXP_PATH = Path('./intermediate_datafiles/chapter2_result.csv')
+EXPERIMENT_PATH = Path('./intermediate_datafiles/chapter2_result.csv')
 
 # Create an initial dataset object
 dataset = pd.read_csv(Path(RESULT_PATH), index_col=0)
 dataset.index = pd.to_datetime(dataset.index)
-dataset_exp = pd.read_csv(Path(EXP_PATH), index_col=0)
+dataset_exp = pd.read_csv(Path(EXPERIMENT_PATH), index_col=0)
 dataset_exp.index = pd.to_datetime(dataset_exp.index)
 
 # Kolmogorov–Smirnov test
