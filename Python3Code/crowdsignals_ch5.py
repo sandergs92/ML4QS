@@ -98,8 +98,6 @@ def main():
 
         dataset_kmed = clusteringNH.k_medoids_over_instances(copy.deepcopy(dataset), [
                                                              'gyr_phone_x', 'gyr_phone_y', 'gyr_phone_z'], k, 'default', 20, n_inits=50)
-        print('WOEP WOEP')
-        print(dataset_kmed)
         DataViz.plot_clusters_3d(dataset_kmed, [
                                  'gyr_phone_x', 'gyr_phone_y', 'gyr_phone_z'], 'cluster', ['label'])
         DataViz.plot_silhouette(dataset_kmed, 'cluster', 'silhouette')
