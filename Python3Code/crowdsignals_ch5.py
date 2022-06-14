@@ -130,12 +130,13 @@ def main():
         k = k_values[np.argmax(silhouette_values)]
         print(f'Highest K-agglomerative silhouette score: k = {k}')
 
-        dataset_aggl = clusteringH.agglomerative_over_instances(copy.deepcopy(dataset), [
+        dataset_aggl, links = clusteringH.agglomerative_over_instances(copy.deepcopy(dataset), [
                                                              'gyr_phone_x', 'gyr_phone_y', 'gyr_phone_z'], k, 'euclidean', use_prev_linkage=True, link_function='ward')
-        DataViz.plot_clusters_3d(dataset_aggl[0], [
+        DataViz.plot_clusters_3d(dataset_aggl, [
                                  'gyr_phone_x', 'gyr_phone_y', 'gyr_phone_z'], 'cluster', ['label'])
-        DataViz.plot_silhouette(dataset_aggl[0], 'cluster', 'silhouette')
-        util.print_latex_statistics_clusters(dataset_aggl[0], 'cluster', [
+        DataViz.plot_silhouette(dataset_aggl, 'cluster', 'silhouette')
+        DataViz.plot_dendrogram(dataset_aggl, links)
+        util.print_latex_statistics_clusters(dataset_aggl, 'cluster', [
                                              'gyr_phone_x', 'gyr_phone_y', 'gyr_phone_z'], 'label')
 
     if FLAGS.mode == 'final':
